@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forma</title>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<form method="POST" novalidate>
+    {% csrf_token %}
+    {% for f in form %}
+        <div>{{ f.label_tag }}</div>
+        <div class="field">{{ f }}</div>
+        <div>{{ f.errors }}</div>
+    {% endfor %}
+    <input class="sendbut" type="submit" value="Отправить">
+</form>
+
+<div class="center"><a href="{% url 'index' %}">Главная</a></div>
+
+</body>
+</html>
